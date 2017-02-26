@@ -1,0 +1,75 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Tomabi</title>
+                <!-- Core CSS - Include with every page -->
+                  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+                  <link href="{% static 'font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+                  <link href="{% static 'css/custom.min.css' %}" rel="stylesheet">
+                  <link href="{% static 'nprogress/nprogress.css' %}" rel="stylesheet">
+                  <link href="{% static 'animate.css/animate.min.css' %}" rel="stylesheet">
+                </head>
+                <body class='login'>
+                    <nav class="navbar navbar-default">
+                        <div class="container-fluid">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <a class="navbar-brand" href="/tomabi/">Tomabi</a>
+                            </div>
+                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> {{ request.user }}
+                                            <span class="caret"></span>
+                                        </a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li>
+                                                <a href="/tomabi/mymangas/">My mangas</a>
+                                            </li>
+                                            <li class="divider"></li>
+                                            <li>
+                                                <a href="/tomabi/myprogress/">My Progress</a>
+                                            </li>
+                                            {% if request.user.is_superuser %}
+                                            <li class="divider"></li>
+                                            <li>
+                                                <a href="myusers/">Admin - My users</a>
+                                            </li>
+                                            {% endif %}
+                                            <li class="divider"></li>
+                                            <li>
+                                              <a href="/tomabi/accounts/logout"><span class="glyphicon glyphicon-off"></span>   Logout</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <ul class="nav navbar-nav pull-right">
+                                  <li><a href="/tomabi/mymangas/refresh"><span class="glyphicon glyphicon-refresh"></span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+
+                {% block content %}
+                {% endblock %}
+
+
+                    <!-- Core Scripts - Include with every page -->
+                    <script src = "{% static 'js/jquery.min.js' %}"></script>
+                    <script src = "{% static 'js/bootstrap.min.js' %}"></script>
+                    <script src = "{% static 'js/custom.min.js' %}"></script>
+        {% block javascript %}
+        {% endblock %}
+
+
+            </body>
+        </html>

@@ -1,0 +1,25 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auth Demo</title>
+    <!-- Core CSS - Include with every page -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/custom.min.css' %}" rel="stylesheet">
+    <link href="{% static 'nprogress/nprogress.css' %}" rel="stylesheet">
+    <link href="{% static 'animate.css/animate.min.css' %}" rel="stylesheet">
+</head>
+
+<body class='login'>
+    <div class="login_wrapper">
+        <h1>Logged out!</h1>
+        <a href="{% url 'login'%}">Click here to login again.</a>
+    </div>
+</body>
+
+</html>
