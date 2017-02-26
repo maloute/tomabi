@@ -86,7 +86,8 @@ def refresh(request):
     # print('manga_list'+str(manga_set))
     for manga in manga_set:
         print(manga.id)
-        MangaPandaParser(request, manga.id)
+        parser_name = Manga.objects.filter(id=manga.id)[0].parser.methodname
+        globals()[parser_name](request, manga.id)
     return redirect('/tomabi/myprogress/')
 
 @login_required
