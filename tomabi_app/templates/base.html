@@ -45,6 +45,12 @@
                                                 <a href="myusers/">Admin - My users</a>
                                             </li>
                                             {% endif %}
+                                            {% if request.user.is_superuser %}
+                                            <li class="divider"></li>
+                                            <li>
+                                                <a href="/tomabi/parser/list/">Admin - My parsers</a>
+                                            </li>
+                                            {% endif %}
                                             <li class="divider"></li>
                                             <li>
                                               <a href="/tomabi/accounts/logout"><span class="glyphicon glyphicon-off"></span>   Logout</a>

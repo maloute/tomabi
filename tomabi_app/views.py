@@ -3,10 +3,13 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 # Create your views here.
 from django.http import HttpResponse
 from django.forms import ModelForm
-from forms import AddMangaForm
-from .models import Manga, ReadingProgress
+from forms import AddMangaForm, AddParserForm
+from .models import Manga, ReadingProgress, Parser
 from django.contrib import messages
 from parser.mangapanda import *
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic import DetailView, ListView
+from django.urls import reverse_lazy
 
 
 @login_required
@@ -109,3 +112,28 @@ def myprogress(request):
         reversed_chapter_dict = collections.OrderedDict(reversed(list(chapter_dict.items())))
         manga_dict[manga] = reversed_chapter_dict
     return render(request, 'myprogress.html', { 'manga_dict': manga_dict})
+
+
+# @user_passes_test(lambda u: u.is_staff)
+class CreateParser(CreateView):
+    form_class = AddParserForm
+    template_name = 'parser/add.html'
+    success_url = '/tomabi/parser/list/'
+
+
+class UpdateParser(UpdateView):
+    model = Parser
+    form_class = AddParserForm
+    template_name = 'parser/add.html'
+    success_url = '/tomabi/parser/list/'
+
+
+class ListParser(ListView):
+    queryset = Parser.objects.all()
+    template_name = 'parser/list.html'
+
+
+class DeleteParser(DeleteView):
+    model = Parser
+    template_name = "parser/parser_confirm_delete.html"
+    success_url = reverse_lazy('parser-list')
