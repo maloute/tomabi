@@ -3,6 +3,7 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Field, Submit, Button, Div, Reset
 from django import forms
 from models import Manga, Parser
+from tomabi_app.parser.mangapanda import MangaPandaParser
 
 # If you don't do this you cannot use Bootstrap CSS
 class LoginForm(AuthenticationForm):
@@ -54,6 +55,15 @@ class AddParserForm(forms.ModelForm):
                 )
             )
         super(AddParserForm, self).__init__(*args, **kwargs)
+
+    def clean_methodname(self):
+        data = self.cleaned_data['methodname']
+        try:
+            globals()[data]()
+        except KeyError:
+            raise forms.ValidationError("Method name does not exists in the parser directory or import failed !")
+        except TypeError:
+            return data
 
     class Meta:
         model = Parser
