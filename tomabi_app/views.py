@@ -7,6 +7,7 @@ from forms import AddMangaForm, AddParserForm
 from .models import Manga, ReadingProgress, Parser
 from django.contrib import messages
 from parser.mangapanda import *
+from parser.mangafox import *
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView, ListView
 from django.urls import reverse_lazy
@@ -104,6 +105,8 @@ def myprogress(request):
             last_read_chapter = ReadingProgress.objects.filter(user=request.user.id).filter(manga=manga.id)[0].last_chapter.number
         except Chapter.DoesNotExist:
             print("Either the entry or blog doesn't exist.")
+            last_read_chapter = 1
+        except IndexError:
             last_read_chapter = 1
         chapter_dict = collections.OrderedDict()
         for chapter in chapter_set:

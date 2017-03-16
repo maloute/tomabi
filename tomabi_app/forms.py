@@ -4,6 +4,8 @@ from crispy_forms.layout import Layout, Field, Submit, Button, Div, Reset
 from django import forms
 from models import Manga, Parser
 from tomabi_app.parser.mangapanda import MangaPandaParser
+from tomabi_app.parser.mangafox import MangaFoxParser
+
 
 # If you don't do this you cannot use Bootstrap CSS
 class LoginForm(AuthenticationForm):
