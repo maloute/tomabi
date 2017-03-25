@@ -5,13 +5,15 @@ from . import views
 
 # from parser import MangaPandaParser
 from tomabi_app.forms import LoginForm
-from tomabi_app.views import CreateParser, UpdateParser, ListParser, DeleteParser
+from tomabi_app.views import CreateParser, UpdateParser, ListParser, DeleteParser, RegistrationView
 
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^accounts/login/', auth_views.login, {'authentication_form': LoginForm}, name='login'),
     url(r'^accounts/logout/', auth_views.logout, name='logout'),
+    url(r'^accounts/login/', auth_views.login, {'authentication_form': LoginForm}, name='login'),
+    url(r'^accounts/register/$', RegistrationView.as_view(), name='register'),
     url('^accounts/', include('django.contrib.auth.urls')),
     url(r'^mymangas/$', views.mymangas, name='mymangas'),
     url(r'^mymangas/add/$', views.addmangas, name='addmangas'),

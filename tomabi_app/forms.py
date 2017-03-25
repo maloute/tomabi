@@ -1,4 +1,4 @@
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Field, Submit, Button, Div, Reset
 from django import forms
@@ -14,6 +14,14 @@ class LoginForm(AuthenticationForm):
     password = forms.CharField(label="Password", max_length=30,
                                widget=forms.PasswordInput(attrs={'class': 'form-control', 'name': 'password', 'placeholder': 'Password'}))
 
+
+class RegisterForm(UserCreationForm):
+    username = forms.CharField(label="Username", max_length=30,
+                               widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'username', 'placeholder': 'Username'}))
+    password1 = forms.CharField(label="Password1", max_length=30,
+                               widget=forms.PasswordInput(attrs={'class': 'form-control', 'name': 'password1', 'placeholder': 'Password'}))
+    password2 = forms.CharField(label="Password2", max_length=30,
+                               widget=forms.PasswordInput(attrs={'class': 'form-control', 'name': 'password2', 'placeholder': 'Password'}))
 
 class AddMangaForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):

@@ -3,19 +3,25 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 # Create your views here.
 from django.http import HttpResponse
 from django.forms import ModelForm
-from forms import AddMangaForm, AddParserForm
+from forms import AddMangaForm, AddParserForm, RegisterForm
 from .models import Manga, ReadingProgress, Parser
 from django.contrib import messages
 from parser.mangapanda import *
 from parser.mangafox import *
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.views.generic import DetailView, ListView
+from django.views.generic import DetailView, ListView, FormView
 from django.urls import reverse_lazy
 
 
 @login_required
 def index(request):
     return render(request, 'index.html')
+
+
+class RegistrationView(CreateView):
+    template_name = 'registration/register.html'
+    form_class = RegisterForm
+    success_url = '/tomabi/accounts/login'
 
 
 @login_required

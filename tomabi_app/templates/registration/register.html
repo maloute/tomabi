@@ -18,7 +18,7 @@
     <div class="alert alert-danger alert-dismissible fade in" role="alert">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
       </button>
-      Your username and password didn't match. Please try again.
+     {{ form.errors }}
     </div>
 {% endif %}
 
@@ -35,27 +35,25 @@
 
           <div class="login_wrapper">
             <section class="login_content">
-                    <form method="post" action="{% url 'login' %}">
+                    <form method="post" action="{% url 'register' %}">
                       {% csrf_token %}
-                      <h1>Login!</h1>
+                      <h1>Register !</h1>
                             <div>
                               {{ form.username.label_tag }}  {{ form.username }}
                             </div>
                             <div>
-                              {{ form.password.label_tag }}  {{ form.password }}
+                              {{ form.password1.label_tag }}  {{ form.password1 }}
+                            </div>
+                            <div>
+                              {{ form.password2.label_tag }}  {{ form.password2 }}
                             </div>
                         <p class="bs-component">
                             <center>
-                                <input class="btn btn-default" type="submit" value="Login" />
+                                <input class="btn btn-default" type="submit" value="Register" />
                             </center>
                         </p>
                         <input type="hidden" name="next" value="{{ next }}" />
                     </form>
-                    <div class="separator">
-                      <p class="change_link">New to site?
-                        <a href="{% url 'register' %}" class="to_register"> Create Account </a>
-                      </p>
-                    </div>
                   </section>
                   </div>
 
