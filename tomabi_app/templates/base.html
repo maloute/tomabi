@@ -35,20 +35,17 @@
                                             <li>
                                                 <a href="/tomabi/mymangas/">My mangas</a>
                                             </li>
-                                            <li class="divider"></li>
                                             <li>
                                                 <a href="/tomabi/myprogress/">My Progress</a>
                                             </li>
                                             {% if request.user.is_superuser %}
                                             <li class="divider"></li>
+                                            <li class="dropdown-header">Admin</li>
                                             <li>
-                                                <a href="myusers/">Admin - My users</a>
+                                                <a href="myusers/">My users</a>
                                             </li>
-                                            {% endif %}
-                                            {% if request.user.is_superuser %}
-                                            <li class="divider"></li>
                                             <li>
-                                                <a href="/tomabi/parser/list/">Admin - My parsers</a>
+                                                <a href="/tomabi/parser/list/">My parsers</a>
                                             </li>
                                             {% endif %}
                                             <li class="divider"></li>
