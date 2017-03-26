@@ -28,7 +28,8 @@
                                 {{ number }}
                             </td>
                             <td><a class="btn btn-info btn-ok" type="button" href="{{ url }}" target="_blank">Read</a>
-                                <a class="btn btn-success" type="button" href="/tomabi/mymangas/read/{{ manga_set.id }}/{{ number }}">Mark as read</a></td>
+                                <a class="btn btn-success" type="button" href="{% url 'markasread' id=manga_set.id chapter=number %}">Mark as read</a></td>
+
                         </tr>
                         {% endfor %}
                     </tbody>

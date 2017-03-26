@@ -33,10 +33,10 @@
                                         </a>
                                         <ul class="dropdown-menu" role="menu">
                                             <li>
-                                                <a href="/tomabi/mymangas/">My mangas</a>
+                                                <a href="{% url 'mymangas' %}">My mangas</a>
                                             </li>
                                             <li>
-                                                <a href="/tomabi/myprogress/">My Progress</a>
+                                                <a href="{% url 'myprogress' %}">My Progress</a>
                                             </li>
                                             {% if request.user.is_superuser %}
                                             <li class="divider"></li>
@@ -45,18 +45,18 @@
                                                 <a href="myusers/">My users</a>
                                             </li>
                                             <li>
-                                                <a href="/tomabi/parser/list/">My parsers</a>
+                                                <a href="{% url 'parser-list' %}">My parsers</a>
                                             </li>
                                             {% endif %}
                                             <li class="divider"></li>
                                             <li>
-                                              <a href="/tomabi/accounts/logout"><span class="glyphicon glyphicon-off"></span>   Logout</a>
+                                              <a href="{% url 'logout' %}"><span class="glyphicon glyphicon-off"></span>   Logout</a>
                                             </li>
                                         </ul>
                                     </li>
                                 </ul>
                                 <ul class="nav navbar-nav pull-right">
-                                  <li><a href="/tomabi/mymangas/refresh"><span class="glyphicon glyphicon-refresh"></span></a></li>
+                                  <li><a href="{% url 'refresh' %}"><span class="glyphicon glyphicon-refresh"></span></a></li>
                                 </ul>
                             </div>
                         </div>

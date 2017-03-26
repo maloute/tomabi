@@ -76,8 +76,8 @@
                               <td class=" ">{{ manga.name }}</td>
                               <td class=" ">{{ manga.url }}</td>
                               <td class=" ">{{ manga.parser }}</td>
-                              <td class=" "><button class="btn btn-info btn-ok" type="button" data-href="/tomabi/mymangas/delete/{{ manga.id }}" data-toggle="modal" data-target="#myModal">
-                        Delete</button> <button type="button" class="btn btn-success" onclick="location.href='/tomabi/mymangas/reset/{{ manga.id }}';">Reset</button>
+                              <td class=" "><button class="btn btn-info btn-ok" type="button" data-href="{% url 'deletemangas' id=manga.id %}" data-toggle="modal" data-target="#myModal">
+                        Delete</button> <button type="button" class="btn btn-success" onclick="location.href='{% url 'resetmangas' id=manga.id %}';">Reset</button>
                               </td>
                           </tr>
                           {% endfor %}
